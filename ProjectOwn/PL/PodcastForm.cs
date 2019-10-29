@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjectOwn.BLL;
 
@@ -27,7 +20,6 @@ namespace ProjectOwn
             if (Validation.URLInputValidation(tbURLInput.Text))
             {
                 MessageBox.Show("Podcast Added!", "Success", MessageBoxButtons.OK);
-                onLoadFillCategoryList();
             }
             else
             {
@@ -41,7 +33,8 @@ namespace ProjectOwn
             {
                 MessageBox.Show("Category Added!", "Success", MessageBoxButtons.OK);
                 string category = tbCategoryInput.Text;
-                XML_FileAccess.ChangeCategoryXMLFile(category);
+                XML_FileAccess.AddToCategoryXMLFile(category);
+                onLoadFillCategoryList();
             }
             else
             {
@@ -54,6 +47,13 @@ namespace ProjectOwn
             listViewCategories.Clear();
             foreach (string title in XML_FileAccess.LoadCategoryXMLFile())
                 listViewCategories.Items.Add(title);
+        }
+
+
+        private void btnRemoveCategory_Click(object sender, EventArgs e)
+        {
+            XML_FileAccess.RemoveFromCategoryXMLFile(tbCategoryInput.Text);
+            onLoadFillCategoryList();
         }
     }
 }

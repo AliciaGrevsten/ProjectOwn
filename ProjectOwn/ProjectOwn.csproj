@@ -51,15 +51,15 @@
     <Compile Include="BLL\Podcast.cs" />
     <Compile Include="BLL\Validation.cs" />
     <Compile Include="BLL\XML_FileAccess.cs" />
-    <Compile Include="GUI\PodcastForm.cs">
+    <Compile Include="PL\PodcastForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\PodcastForm.Designer.cs">
+    <Compile Include="PL\PodcastForm.Designer.cs">
       <DependentUpon>PodcastForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GUI\PodcastForm.resx">
+    <EmbeddedResource Include="PL\PodcastForm.resx">
       <DependentUpon>PodcastForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -85,12 +85,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DLL\XML_Categories\Categories.xml">
+    <Content Include="DAL\XML_Categories\Categories.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DLL\XML_PodcastFeeds\" />
+    <Folder Include="DAL\XML_PodcastFeeds\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

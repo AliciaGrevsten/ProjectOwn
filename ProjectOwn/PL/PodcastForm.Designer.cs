@@ -50,13 +50,13 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.listView2 = new System.Windows.Forms.ListView();
             this.listViewCategories = new System.Windows.Forms.ListView();
+            this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel4 = new System.Windows.Forms.Panel();
             this.tbCategoryInput = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnRemoveCategory = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.btnAddCategory = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -280,7 +280,7 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.tbCategoryInput);
-            this.panel4.Controls.Add(this.button6);
+            this.panel4.Controls.Add(this.btnRemoveCategory);
             this.panel4.Controls.Add(this.button5);
             this.panel4.Controls.Add(this.btnAddCategory);
             this.panel4.Controls.Add(this.label8);
@@ -297,14 +297,15 @@
             this.tbCategoryInput.Size = new System.Drawing.Size(203, 20);
             this.tbCategoryInput.TabIndex = 9;
             // 
-            // button6
+            // btnRemoveCategory
             // 
-            this.button6.Location = new System.Drawing.Point(16, 495);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(202, 25);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Remove";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnRemoveCategory.Location = new System.Drawing.Point(16, 495);
+            this.btnRemoveCategory.Name = "btnRemoveCategory";
+            this.btnRemoveCategory.Size = new System.Drawing.Size(202, 25);
+            this.btnRemoveCategory.TabIndex = 8;
+            this.btnRemoveCategory.Text = "Remove";
+            this.btnRemoveCategory.UseVisualStyleBackColor = true;
+            this.btnRemoveCategory.Click += new System.EventHandler(this.btnRemoveCategory_Click);
             // 
             // button5
             // 
@@ -343,7 +344,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Name = "PodcastForm";
-            this.Text = "Form1";
+            this.Text = "Podcast Application";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -382,7 +383,7 @@
         private System.Windows.Forms.ListView listViewCategories;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox tbCategoryInput;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnRemoveCategory;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btnAddCategory;
         private System.Windows.Forms.Label label8;
