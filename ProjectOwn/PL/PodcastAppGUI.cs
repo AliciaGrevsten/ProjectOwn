@@ -32,11 +32,18 @@ namespace ProjectOwn
         {
             if (Validation.CharacterInputLengthValidation(tbCategoryInput.Text))
             {
-                MessageBox.Show("Category successfully added!", "Success", MessageBoxButtons.OK);
-                string category = tbCategoryInput.Text;
-                XML_FileAccess.AddToCategoryXMLFile(category);
-                onLoadFillCategoryList();
-                tbCategoryInput.Clear(); 
+                if (!Validation.CategoryExistValidation(tbCategoryInput.Text))
+                {
+                    MessageBox.Show("Category successfully added!", "Success", MessageBoxButtons.OK);
+                    string category = tbCategoryInput.Text;
+                    XML_FileAccess.AddToCategoryXMLFile(category);
+                    onLoadFillCategoryList();
+                    tbCategoryInput.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Category already exists.", "Something Went Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
