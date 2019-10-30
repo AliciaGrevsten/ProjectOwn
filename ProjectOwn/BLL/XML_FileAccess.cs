@@ -63,7 +63,15 @@ namespace ProjectOwn.BLL
         {
             // https://www.youtube.com/watch?v=ulzFqXb13dI&list=PLY1UVBlGVILWSg2OvxRiqeCMqBK5k8aU-&index=5&t=207s
         }
-    }
 
-   
+        public static void ChangePodcastItem()
+        {
+            //
+        }
+
+        public static void ChangeCategoriItem()
+        {
+            //
+        }
+    }
 }

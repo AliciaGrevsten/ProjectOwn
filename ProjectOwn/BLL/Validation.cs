@@ -74,7 +74,4 @@ namespace ProjectOwn
             return false;
         }
     }
-
-    
-
 }
