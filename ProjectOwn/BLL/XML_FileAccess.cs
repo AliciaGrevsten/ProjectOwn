@@ -24,6 +24,7 @@ namespace ProjectOwn.BLL
             // https://stackoverflow.com/questions/9761363/adding-to-xml-file
             XDocument doc = XDocument.Load("../../DAL/XML_Categories/Categories.xml");
             XElement newElement = new XElement("category", new XAttribute("title", title));
+
             doc.Root.Add(newElement);
             doc.Save("../../DAL/XML_Categories/Categories.xml");
 
@@ -31,18 +32,13 @@ namespace ProjectOwn.BLL
 
         public static void RemoveFromCategoryXMLFile(string title)
         {
-            //https://stackoverflow.com/questions/8382834/how-to-remove-an-xml-element-from-file
-            //XmlDocument doc = new XmlDocument();
-            //doc.Load("../../DAL/XML_Categories/Categories.xml");
+            // https://stackoverflow.com/questions/58620539/remove-an-item-from-xml-file-using-c-sharp
 
-            //XmlNode node = doc.SelectSingleNode($"/categories/category[@name='{title}']");
+            var xml = XDocument.Load("../../DAL/XML_Categories/Categories.xml");
 
-            //if (node != null)
-            //{
-            //    XmlNode parent = node.ParentNode;
-            //    parent.RemoveChild(node);
-            //    doc.Save("../../DAL/XML_Categories/Categories.xml");
-            //}
+            xml.Root.Elements("category").Where(e => e.Attribute("title").Value == title).Remove();
+
+            xml.Save("../../DAL/XML_Categories/Categories.xml");
         }
 
         public static void RemoveFromPodcastXMLFile(string title)

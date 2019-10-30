@@ -19,6 +19,7 @@ namespace ProjectOwn
         {
             if (Validation.URLInputValidation(tbURLInput.Text))
             {
+                //  Code for adding podcast
                 MessageBox.Show("Podcast Added!", "Success", MessageBoxButtons.OK);
             }
             else
@@ -31,15 +32,33 @@ namespace ProjectOwn
         {
             if (Validation.CharacterInputLengthValidation(tbCategoryInput.Text))
             {
-                MessageBox.Show("Category Added!", "Success", MessageBoxButtons.OK);
+                MessageBox.Show("Category successfully added!", "Success", MessageBoxButtons.OK);
                 string category = tbCategoryInput.Text;
                 XML_FileAccess.AddToCategoryXMLFile(category);
                 onLoadFillCategoryList();
+                tbCategoryInput.Clear(); 
             }
             else
             {
-                MessageBox.Show("Incorrect Input. \nHas to be at least 3 characters long \nand cannot contain any numbers", "Something Went Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Incorrect Input. \nHas to be between 3-30 characters long \nand cannot contain any numbers and cannot \n start with a white space.", "Something Went Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnRemoveCategory_Click(object sender, EventArgs e)
+        {
+            if (tbCategoryInput.Text.Length == 0 || Validation.CategoryExistValidation(tbCategoryInput.Text))
+            {
+                MessageBox.Show("Category successfully removed.", "Success", MessageBoxButtons.OK);
+                string category = tbCategoryInput.Text;
+                XML_FileAccess.RemoveFromCategoryXMLFile(category);
+                onLoadFillCategoryList();
+                tbCategoryInput.Clear();
+            }
+            else
+            {
+                MessageBox.Show("The input does not correnspomd with an existing category.", "Something Went Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void onLoadFillCategoryList()
@@ -49,11 +68,30 @@ namespace ProjectOwn
                 listViewCategories.Items.Add(title);
         }
 
-
-        private void btnRemoveCategory_Click(object sender, EventArgs e)
+        private void listViewCategories_SelectedIndexChanged(object sender, EventArgs e)
         {
-            XML_FileAccess.RemoveFromCategoryXMLFile(tbCategoryInput.Text);
-            onLoadFillCategoryList();
+            if (listViewCategories.SelectedItems.Count > 0)
+            {
+                tbCategoryInput.Clear();
+                ListViewItem listViewItem = listViewCategories.SelectedItems[0];
+                tbCategoryInput.Text = listViewItem.Text;
+            }
+        }
+
+        private void btnChangeCategory_Click(object sender, EventArgs e)
+        {
+            //  Choose a category from the list
+            //  Save choice (in global field?)
+            //  Save new input
+            //  Replace old string with new string (method in XML_FileAccess)
+
+            if (listViewCategories.SelectedItems.Count > 0)
+            {
+
+            } else
+            {
+                MessageBox.Show("Select a category to change from the list.", "Something Went Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
