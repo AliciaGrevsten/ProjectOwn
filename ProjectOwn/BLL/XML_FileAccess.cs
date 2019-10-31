@@ -69,9 +69,21 @@ namespace ProjectOwn.BLL
             //
         }
 
-        public static void ChangeCategoriItem()
+        public static void ChangeCategoriItem(string oldCategory, string newCategory)
         {
-            //
+            XmlDocument doc = new XmlDocument();
+            doc.Load("../../DAL/XML_Categories/Categories.xml");
+
+            foreach(XmlNode node in doc.DocumentElement)
+            {
+                if (node.Attributes["title"].Value == oldCategory)
+                {
+                    node.Attributes["title"].Value = newCategory;
+                }
+            }
+
+            doc.Save("../../DAL/XML_Categories/Categories.xml");
+
         }
     }
 }

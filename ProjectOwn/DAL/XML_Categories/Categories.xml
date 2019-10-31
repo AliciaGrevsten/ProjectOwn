@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <categories>
-  <category title="Horror"></category>
-  <category title="Romance"></category>
-  <category title="Health"></category>
-  <category title="Science Fiction" />
+  <category title="Horror" />
+  <category title="Romance" />
+  <category title="Health" />
+  <category title="Science" />
   <category title="Programming" />
+  <category title="Science Fiction" />
 </categories>

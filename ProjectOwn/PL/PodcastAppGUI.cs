@@ -6,6 +6,8 @@ namespace ProjectOwn
 {
     public partial class PodcastForm : Form
     {
+        public string CategoryToChange;
+
         public PodcastForm()
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace ProjectOwn
             {
                 if (!Validation.CategoryExistValidation(tbCategoryInput.Text))
                 {
-                    MessageBox.Show("Category successfully added!", "Success", MessageBoxButtons.OK);
+                    //MessageBox.Show("Category successfully added!", "Success", MessageBoxButtons.OK);
                     string category = tbCategoryInput.Text;
                     XML_FileAccess.AddToCategoryXMLFile(category);
                     onLoadFillCategoryList();
@@ -55,7 +57,7 @@ namespace ProjectOwn
         {
             if (tbCategoryInput.Text.Length == 0 || Validation.CategoryExistValidation(tbCategoryInput.Text))
             {
-                MessageBox.Show("Category successfully removed.", "Success", MessageBoxButtons.OK);
+                // MessageBox.Show("Category successfully removed.", "Success", MessageBoxButtons.OK);
                 string category = tbCategoryInput.Text;
                 XML_FileAccess.RemoveFromCategoryXMLFile(category);
                 onLoadFillCategoryList();
@@ -66,6 +68,20 @@ namespace ProjectOwn
                 MessageBox.Show("The input does not correnspomd with an existing category.", "Something Went Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
+        }
+
+        private void btnChangeCategory_Click(object sender, EventArgs e)
+        {
+            //  Choose a category from the list
+            //  Save choice (in global field?)
+            //  Save new input
+            //  Replace old string with new string (method in XML_FileAccess)
+
+            string newCategory = tbCategoryInput.Text;
+            XML_FileAccess.ChangeCategoriItem(CategoryToChange, newCategory);
+
+            onLoadFillCategoryList();
+            tbCategoryInput.Clear();
         }
 
         private void onLoadFillCategoryList()
@@ -82,23 +98,10 @@ namespace ProjectOwn
                 tbCategoryInput.Clear();
                 ListViewItem listViewItem = listViewCategories.SelectedItems[0];
                 tbCategoryInput.Text = listViewItem.Text;
+                CategoryToChange = listViewItem.Text;
             }
         }
 
-        private void btnChangeCategory_Click(object sender, EventArgs e)
-        {
-            //  Choose a category from the list
-            //  Save choice (in global field?)
-            //  Save new input
-            //  Replace old string with new string (method in XML_FileAccess)
-
-            if (listViewCategories.SelectedItems.Count > 0)
-            {
-
-            } else
-            {
-                MessageBox.Show("Select a category to change from the list.", "Something Went Wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        
     }
 }
